@@ -1,4 +1,15 @@
-[riscv64-toolchain]https://github.com/sifive/freedom-tools/releases
+[riscv64-toolchain](https://github.com/sifive/freedom-tools/releases)
+
+************************************env
+```
+ubuntu@ubuntu:~$ uname -a
+Linux ubuntu 4.15.0-76-generic #86-Ubuntu SMP Fri Jan 17 17:25:58 UTC 2020 aarch64 aarch64 aarch64 GNU/Linux 
+ubuntu@ubuntu:~$ qemu-riscv64 -verion
+qemu: unknown option 'verion'
+ubuntu@ubuntu:~$ qemu-riscv64 -version
+qemu-riscv64 version 6.1.0
+Copyright (c) 2003-2021 Fabrice Bellard and the QEMU Project developers
+```
 
 ************************************build
 (1)  # include_next <stdint.h>
@@ -42,6 +53,26 @@ Makefile:58: recipe for target 'build/RTOSDemo.axf' failed
 /usr/lib/riscv64-unknown-elf/bin/ld: build/main_blinky.o: file class ELFCLASS32 incompatible with ELFCLASS64
 /usr/lib/riscv64-unknown-elf/bin/ld: final link failed: file in wrong format
 ```
+
+first, look riscv64-linux-gnu-gcc -v
+```
+riscv64-linux-gnu-gcc -v
+Using built-in specs.
+COLLECT_GCC=riscv64-linux-gnu-gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc-cross/riscv64-linux-gnu/8/lto-wrapper
+Target: riscv64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 8.4.0-1ubuntu1~18.04' --with-bugurl=file:///usr/share/doc/gcc-8/README.Bugs --enable-languages=c,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libsanitizer --disable-libquadmath --disable-libquadmath-support --enable-plugin --enable-default-pie --with-system-zlib --disable-libphobos --enable-multiarch --disable-werror --disable-multilib --with-arch=rv64imafdc --with-abi=lp64d --enable-checking=release --build=aarch64-linux-gnu --host=aarch64-linux-gnu --target=riscv64-linux-gnu --program-prefix=riscv64-linux-gnu- --includedir=/usr/riscv64-linux-gnu/include
+Thread model: posix
+gcc version 8.4.0 (Ubuntu 8.4.0-1ubuntu1~18.04) 
+```
+--with-arch=rv64imafdc --with-abi=lp64d
+```
+change to 64
+CFLAGS  = -march=rv64imafdc -mabi=lp64d -mcmodel=medany
+ASFLAGS = -march=rv64imafdc -mabi=lp64d -mcmodel=medany
+```
+
+
 
 ```
 ls /usr/lib/gcc/riscv64-unknown-elf/9.3.0/
