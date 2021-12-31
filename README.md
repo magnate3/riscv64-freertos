@@ -100,6 +100,13 @@ crtend.o    libg.a         liblto_plugin.so.0      lto-wrapper    rv32ia    rv32
 crti.o      libgcc.a       liblto_plugin.so.0.0.0  plugin         rv32iac   rv32imafdc  rv64if
 crtn.o      libgcov.a      libm.a                  rv32e          rv32iaf   rv32imf     rv64ifd
 ```
+************************************make successfully
+```
+FreeRTOS-main/FreeRTOS/Demo/RISC-V-Qemu-virt_GCC# ls build/
+home           main_blinky.o  main.o     ns16550.o     riscv-virt.o  start.d
+main_blinky.d  main.d         ns16550.d  riscv-virt.d  RTOSDemo.axf  start.o
+```
+
 
 ************************************run
 
