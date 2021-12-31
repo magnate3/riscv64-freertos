@@ -1,4 +1,6 @@
-[riscv64-toolchain](https://github.com/sifive/freedom-tools/releases)
+[riscv64-toolchain download](https://github.com/sifive/freedom-tools/releases)
+
+![all develop tools](https://github.com/magnate3/riscv64-freertos/blob/main/pic/all.png)
 
 ************************************env
 ```
@@ -10,10 +12,17 @@ ubuntu@ubuntu:~$ qemu-riscv64 -version
 qemu-riscv64 version 6.1.0
 Copyright (c) 2003-2021 Fabrice Bellard and the QEMU Project developers
 ```
+install riscv64-unknown-elf
+```
+ls binutils-riscv64-unknown-elf_2.34-0ubuntu1_arm64.deb 
+binutils-riscv64-unknown-elf_2.34-0ubuntu1_arm64.deb
+ls gcc-riscv64-unknown-elf_9.3.0-0ubuntu1_arm64.deb 
+gcc-riscv64-unknown-elf_9.3.0-0ubuntu1_arm64.deb
+```
 
 ************************************build
 (1)  # include_next <stdint.h>
-I'll bet you forgot to pass -ffreestanding to your compiler. 
+to pass -ffreestanding to your compiler. 
 ```
 CPPFLAGS = \
         -D__riscv_float_abi_soft -ffreestanding \
@@ -29,6 +38,9 @@ dpkg --contents gcc-riscv64-unknown-elf_9.3.0-0ubuntu1_arm64.deb  | grep stdint
 -rw-r--r-- root/root       328 2020-04-02 17:41 ./usr/lib/gcc/riscv64-unknown-elf/9.3.0/include/stdint.h
 -rw-r--r-- root/root      3960 2020-04-02 17:41 ./usr/lib/gcc/riscv64-unknown-elf/9.3.0/plugin/include/config/newlib-stdint.h
 
+
+![add header](https://github.com/magnate3/riscv64-freertos/blob/main/pic/inc.png)
+
 ************************************link
 (1) problem1
 ```
@@ -40,6 +52,7 @@ Makefile:58: recipe for target 'build/RTOSDemo.axf' failed
 
 /usr/lib/gcc/riscv64-unknown-elf/9.3.0
 ```
+![add link package](https://github.com/magnate3/riscv64-freertos/blob/main/pic/so.png)
 
 (2) problem2
 ```
