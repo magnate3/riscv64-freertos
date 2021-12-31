@@ -1,6 +1,6 @@
 [riscv64-toolchain download](https://github.com/sifive/freedom-tools/releases)
-
-![all develop tools](https://github.com/magnate3/riscv64-freertos/blob/main/pic/all.png)
+all develop tools
+![image](https://github.com/magnate3/riscv64-freertos/blob/main/pic/all.png)
 
 ************************************env
 ```
@@ -29,7 +29,7 @@ CPPFLAGS = \
 ```
 
 
-
+```
 riscv64-unknown-elf-gcc -E   -march=rv32i      -mabi=ilp32 -dM -nostdlib - < /dev/null |grep STDC_HOSTED
 #define __STDC_HOSTED__ 1
 
@@ -37,9 +37,9 @@ dpkg --contents gcc-riscv64-unknown-elf_9.3.0-0ubuntu1_arm64.deb  | grep stdint
 -rw-r--r-- root/root      9457 2020-04-02 17:41 ./usr/lib/gcc/riscv64-unknown-elf/9.3.0/include/stdint-gcc.h
 -rw-r--r-- root/root       328 2020-04-02 17:41 ./usr/lib/gcc/riscv64-unknown-elf/9.3.0/include/stdint.h
 -rw-r--r-- root/root      3960 2020-04-02 17:41 ./usr/lib/gcc/riscv64-unknown-elf/9.3.0/plugin/include/config/newlib-stdint.h
-
-
-![add header](https://github.com/magnate3/riscv64-freertos/blob/main/pic/inc.png)
+```
+add header
+![image](https://github.com/magnate3/riscv64-freertos/blob/main/pic/inc.png)
 
 ************************************link
 (1) problem1
@@ -52,7 +52,8 @@ Makefile:58: recipe for target 'build/RTOSDemo.axf' failed
 
 /usr/lib/gcc/riscv64-unknown-elf/9.3.0
 ```
-![add link package](https://github.com/magnate3/riscv64-freertos/blob/main/pic/so.png)
+add link package
+![image](https://github.com/magnate3/riscv64-freertos/blob/main/pic/so.png)
 
 (2) problem2
 ```
