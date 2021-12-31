@@ -2,8 +2,7 @@
 
 all develop tools
 ![image](https://github.com/magnate3/riscv64-freertos/blob/main/pic/all.png)
-
-*attention *
+ 
 
 ************************************env
 ```
@@ -22,7 +21,7 @@ binutils-riscv64-unknown-elf_2.34-0ubuntu1_arm64.deb
 ls gcc-riscv64-unknown-elf_9.3.0-0ubuntu1_arm64.deb 
 gcc-riscv64-unknown-elf_9.3.0-0ubuntu1_arm64.deb
 ```
-*attention * : in aarch64 lack  some files including headers or *.so or *.a , but you can copy from riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14\riscv64-unknown-elf
+**attention ** : in aarch64 lack  some files including headers or *.so or *.a , but you can copy from riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14\riscv64-unknown-elf
 ************************************build
 (1)  # include_next <stdint.h>
 to pass -ffreestanding to your compiler. 
