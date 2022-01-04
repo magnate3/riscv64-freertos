@@ -1,0 +1,12 @@
+https://github.com/OSCPU/FreeRTOS/tree/afbd3dca6a385498424a34a7e26493d97e58f8eb
+qemu-system-riscv64 -M virt -kernel build/FreeRTOS-simple.elf.bin -bios none -serial stdio -display none
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
+recv msg : Blink
