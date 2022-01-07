@@ -79,7 +79,9 @@ Backtrace stopped: frame did not save the PC
 
 
 ================================assemble
+
 (1)x0寄存器
+
 
 搞过Linux的都知道Linux有两个特殊的设备：/dev/zero和/dev/null。从/dev/zero可以源源不断地读到0，往/dev/null写的任何内容都被丢弃。如果要创建一个需要填0的文件，就从/dev/zero拷贝，如果要丢弃一些输出，就把输出重定向到/dev/null。
 
