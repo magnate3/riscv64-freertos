@@ -49,7 +49,9 @@ recv msg : Blink
 
 ================================debug
 [FreeRTOS 中 RISC-V-Qemu-virt_GCC运行原理](https://blog.csdn.net/u011011827/article/details/120336068)
+
 qemu-system-riscv64 -M virt -kernel build/FreeRTOS-simple.elf -bios none -serial stdio -s -S
+
 /opt/riscv/bin/riscv64-linux-gnu-gdb -x  debug.txt 
 
 
