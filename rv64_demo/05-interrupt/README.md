@@ -1,5 +1,31 @@
 [original project](https://github.com/OSCPU/FreeRTOS/tree/afbd3dca6a385498424a34a7e26493d97e58f8eb)
 
+================================run
+```
+qemu-system-riscv64 -M virt -kernel build/FreeRTOS-simple.elf.bin -bios none -serial stdio -display none
+Hello, FreeRTOS!
+timers Callback 0
+recv msg : Blink
+timers Callback 1
+recv msg : Blink
+external interruption!
+
+timers Callback 2
+recv msg : Blink
+external interruption!
+
+external interruption!
+
+timers Callback 3
+recv msg : Blink
+external interruption!
+
+external interruption!
+
+timers Callback 4
+recv msg : Blink
+timers Callback 5
+```
 
 ================================debug
 
@@ -9,7 +35,16 @@ qemu-system-riscv64 -M virt -kernel build/FreeRTOS-simple.elf -bios none -serial
 /opt/riscv/bin/riscv64-linux-gnu-gdb -x  debug.txt 
 
 
+**handle_trap**
+
+```
+(gdb) bt
+#0  handle_trap (cause=9223372036854775819, epc=2147492086) at ./riscv64/trap.c:35
+#1  0x00000000800035b8 in test_if_external_interrupt () at ../..//Source/portable/GCC/RISC-V/portASM.S:226
+```
+
 **test_if_mtimer**
+
 ```
 (gdb) b test_if_mtimer
 Breakpoint 2 at 0x8000355c: file ../..//Source/portable/GCC/RISC-V/portASM.S, line 175.
