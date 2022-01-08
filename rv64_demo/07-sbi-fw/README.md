@@ -18,7 +18,7 @@ ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
   not 
   flash (rxai!w) : ORIGIN = 0x80000000, LENGTH = 1M
 ```
-# Firmware load address configuration. This is mandatory.
+**Firmware load address configuration. This is mandatory.**
 FW_TEXT_START=0x80000000
 FW_JUMP_ADDR=0x80200000
 
@@ -95,7 +95,7 @@ QEMU: Terminated
 
 # =============================== run case2
 
-# opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf
+**opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf**
 
 qemu-system-riscv64 -M virt -kernel build/trusted_fw.elf  -bios none -serial stdio -display none
 
