@@ -94,9 +94,13 @@ QEMU: Terminated
 ```
 
 =============================== run case2
-opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf
+
+**opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf**
+
 qemu-system-riscv64 -M virt -kernel build/trusted_fw.elf  -bios none -serial stdio -display none
+
 qemu-system-riscv64 -nographic -machine virt  -bios fw_jump.elf -kernel build/trusted_fw.elf   -display none
+
 ```
 qemu-system-riscv64 -nographic -machine virt  -bios fw_jump.elf -kernel build/trusted_fw.elf   -display none
 
