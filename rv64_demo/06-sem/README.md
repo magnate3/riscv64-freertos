@@ -37,7 +37,7 @@ Handler soft interrupt task - Processing event.
 
 
 
-**ulExampleInterruptHandler*
+**ulExampleInterruptHandler**
 
 ```
 /* ISR */
