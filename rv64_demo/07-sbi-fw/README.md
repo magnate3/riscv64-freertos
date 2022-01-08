@@ -3,6 +3,7 @@
 ```
  section .stack VMA [000000008002f800,000000008002ffff] overlaps section .bss VMA [0000000080021170,000000008003554f]
 ```
+```
 ram (wxa) : ORIGIN = 0x80100000, LENGTH = 64K
 ram is too small
 ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
