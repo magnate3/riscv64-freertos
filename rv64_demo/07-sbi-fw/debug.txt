@@ -1,0 +1,3 @@
+file build/trusted_fw.elf
+target remote :1234
+b _start
