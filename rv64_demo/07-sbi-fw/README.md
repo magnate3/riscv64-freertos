@@ -7,7 +7,9 @@ ram (wxa) : ORIGIN = 0x80100000, LENGTH = 64K
 ram is too small
 ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
 ```
+
 =============================== problem1
+
 ```
  /* witch start of fw_jump.elf test code section start */
   . = 0x80200000;
@@ -18,6 +20,7 @@ ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
 # Firmware load address configuration. This is mandatory.
 FW_TEXT_START=0x80000000
 FW_JUMP_ADDR=0x80200000
+
 =============================== run
 ```
 make PLATFORM=generic FW_PAYLOAD_PATH= build/trusted_fw.elf  CROSS_COMPILE=riscv64-unknown-elf-
@@ -88,6 +91,7 @@ sbi_trap_error: hart0: t4=0x0000000000000000 t5=0x0000000000000010
 sbi_trap_error: hart0: t6=0x0000000000000000
 QEMU: Terminated
 ```
+
 =============================== run case2
 opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf
 qemu-system-riscv64 -M virt -kernel build/trusted_fw.elf  -bios none -serial stdio -display none
@@ -150,6 +154,8 @@ sstatus = 0x0
         Not Permit to Read Executable-only Page
 -----------------Dump OK---------------------
 ```
+
+
 =============================== run case3
 ```
 qemu-system-riscv64 -nographic -machine virt  -bios fw_jump.elf -kernel build/trusted_fw.elf   -display none
