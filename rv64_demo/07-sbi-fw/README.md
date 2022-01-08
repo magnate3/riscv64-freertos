@@ -1,4 +1,4 @@
-=============================== problem1
+# =============================== problem1
 
 ```
  section .stack VMA [000000008002f800,000000008002ffff] overlaps section .bss VMA [0000000080021170,000000008003554f]
@@ -9,7 +9,7 @@ ram is too small
 ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
 ```
 
-=============================== problem1
+# =============================== problem1
 
 ```
  /* witch start of fw_jump.elf test code section start */
@@ -22,7 +22,7 @@ ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
 FW_TEXT_START=0x80000000
 FW_JUMP_ADDR=0x80200000
 
-=============================== run
+# =============================== run
 ```
 make PLATFORM=generic FW_PAYLOAD_PATH= build/trusted_fw.elf  CROSS_COMPILE=riscv64-unknown-elf-
 qemu-system-riscv64 -M virt -m 256M -nographic -bios build/platform/generic/firmware/fw_payload.elf
@@ -93,7 +93,7 @@ sbi_trap_error: hart0: t6=0x0000000000000000
 QEMU: Terminated
 ```
 
-=============================== run case2
+# =============================== run case2
 
 # opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf
 
@@ -161,7 +161,7 @@ sstatus = 0x0
 ```
 
 
-=============================== run case3
+# =============================== run case3
 ```
 qemu-system-riscv64 -nographic -machine virt  -bios fw_jump.elf -kernel build/trusted_fw.elf   -display none
 
