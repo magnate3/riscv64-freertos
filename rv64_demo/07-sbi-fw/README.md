@@ -93,6 +93,10 @@ sbi_trap_error: hart0: t6=0x0000000000000000
 QEMU: Terminated
 ```
 
+# ===============================  fw_jump.elf
+[opensbi_qemu](https://github.com/magnate3/opensbi_qemu)
+
+
 # =============================== run case2
 
 **opensbi-0.4-rv32-bin/platform/qemu/virt/firmware/fw_jump.elf**
