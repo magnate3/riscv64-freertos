@@ -200,7 +200,7 @@ tasks.c:2842
 
 ```
 (gdb) b *0x80200b4a
-Breakpoint 2 at 0x80200b4a: file /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c, line 2842.
+Breakpoint 2 at 0x80200b4a: file 07-sbi-fw/FreeRTOS-Kernel/tasks.c, line 2842.
 (gdb) c
 Continuing.
 
@@ -208,11 +208,11 @@ Breakpoint 1, 0x0000000080200008 in _start ()
 (gdb) c
 Continuing.
 
-Breakpoint 2, 0x0000000080200b4a in xTaskIncrementTick () at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c:2842
+Breakpoint 2, 0x0000000080200b4a in xTaskIncrementTick () at 07-sbi-fw/FreeRTOS-Kernel/tasks.c:2842
 2842                    if( listCURRENT_LIST_LENGTH( &( pxReadyTasksLists[ pxCurrentTCB->uxPriority ] ) ) > ( UBaseType_t ) 1 )
 (gdb) bt
 #0  0x0000000080200b4a in xTaskIncrementTick ()
-    at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c:2842
+    at 07-sbi-fw/FreeRTOS-Kernel/tasks.c:2842
 #1  0x00000000802022f2 in test_if_mtimer ()
 Backtrace stopped: frame did not save the PC
 (gdb) 
