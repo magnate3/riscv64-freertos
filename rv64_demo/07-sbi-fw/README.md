@@ -22,6 +22,19 @@ ram (wxa) : ORIGIN = 0x80100000, LENGTH = 6M
 FW_TEXT_START=0x80000000
 FW_JUMP_ADDR=0x80200000
 
+# =============================== problem3
+change PRIM_HART
+
+```
+#define PRIM_HART                        0
+```
+
+```
+li   a1, PRIM_HART
+        bne  a0, a1, secondary
+```
+
+
 # =============================== run
 ```
 make PLATFORM=generic FW_PAYLOAD_PATH= build/trusted_fw.elf  CROSS_COMPILE=riscv64-unknown-elf-
@@ -163,6 +176,48 @@ sstatus = 0x0
         Not Permit to Read Executable-only Page
 -----------------Dump OK---------------------
 ```
+
+**scause:0x5,stval:0x6211f448,sepc:0x80200b4a**
+
+```
+addr2line 80200b4a -e build/trusted_fw.elf -f -s -C
+xTaskIncrementTick
+tasks.c:2842
+```
+```
+    80200b30:   00100797                auipc   a5,0x100
+    80200b34:   6407b783                ld      a5,1600(a5) # 80301170 <pxCurrentTCB>
+    80200b38:   6fb8                    ld      a4,88(a5)
+    80200b3a:   00271793                slli    a5,a4,0x2
+    80200b3e:   97ba                    add     a5,a5,a4
+    80200b40:   00379713                slli    a4,a5,0x3
+    80200b44:   98018793                addi    a5,gp,-1664 # 80301280 <pxReadyTasksLists>
+    80200b48:   97ba                    add     a5,a5,a4
+    80200b4a:   6398                    ld      a4,0(a5)
+```
+
+当调试汇编程序，或者没有调试信息的程序时，经常需要在程序地址上打断点，方法为b *address。例如：
+
+```
+(gdb) b *0x80200b4a
+Breakpoint 2 at 0x80200b4a: file /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c, line 2842.
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x0000000080200008 in _start ()
+(gdb) c
+Continuing.
+
+Breakpoint 2, 0x0000000080200b4a in xTaskIncrementTick () at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c:2842
+2842                    if( listCURRENT_LIST_LENGTH( &( pxReadyTasksLists[ pxCurrentTCB->uxPriority ] ) ) > ( UBaseType_t ) 1 )
+(gdb) bt
+#0  0x0000000080200b4a in xTaskIncrementTick ()
+    at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c:2842
+#1  0x00000000802022f2 in test_if_mtimer ()
+Backtrace stopped: frame did not save the PC
+(gdb) 
+```
+
 
 
 # =============================== run case3
