@@ -226,6 +226,29 @@ change configTIMER_TASK_STACK_DEPTH in FreeRTOSConfig.h
 ```
 
 ```
+(gdb) b tasks.c:766
+Breakpoint 3 at 0x80201156: file /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c, line 766.
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0x0000000080200008 in _start ()
+(gdb) c
+Continuing.
+
+Breakpoint 3, xTaskCreate (pxTaskCode=pxTaskCode@entry=0x80201e5e <prvQueueReceiveTask>, pcName=pcName@entry=0x8020ce60 "Rx", usStackDepth=usStackDepth@entry=1024, pvParameters=pvParameters@entry=0x0, uxPriority=uxPriority@entry=2, pxCreatedTask=pxCreatedTask@entry=0x0) at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c:766
+766                     pxStack = pvPortMalloc( ( ( ( size_t ) usStackDepth ) * sizeof( StackType_t ) ) ); /*lint !e9079 All values returned by pvPortMalloc() have at least the alignment required by the MCU's stack and this allocation is the stack. */
+(gdb) bt
+#0  xTaskCreate (pxTaskCode=pxTaskCode@entry=0x80201e5e <prvQueueReceiveTask>, 
+    pcName=pcName@entry=0x8020ce60 "Rx", usStackDepth=usStackDepth@entry=1024, 
+    pvParameters=pvParameters@entry=0x0, uxPriority=uxPriority@entry=2, pxCreatedTask=pxCreatedTask@entry=0x0)
+    at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/FreeRTOS-Kernel/tasks.c:766
+#1  0x0000000080201ec6 in main_blinky ()
+    at /home/ubuntu/kernel-liangjun/test/example/FreeRTOS/rv64_demo/trusted_domain/blinky_demo/main_blinky.c:129
+Backtrace stopped: frame did not save the PC
+(gdb) 
+```
+
+```
 qemu-system-riscv64 -nographic -machine virt  -bios fw_jump.elf -kernel build/trusted_fw.elf   -display none
 
 OpenSBI v0.5
