@@ -95,7 +95,6 @@ find the queue full. */
 /* The period of the example software timer, specified in milliseconds, and
  * converted to ticks using the pdMS_TO_TICKS() macro. */
 #define mainSOFTWARE_TIMER_PERIOD_MS    pdMS_TO_TICKS(1000)
-#define mainQUEUE_LENGTH                (1)
 /*
  * Called by main when mainCREATE_SIMPLE_BLINKY_DEMO_ONLY is set to 1 in
  * main.c.
@@ -140,9 +139,9 @@ void main_blinky( void )
 			        xTimerCreate((const char *)"LEDTimer", mainSOFTWARE_TIMER_PERIOD_MS,
 						                     pdTRUE, (void *)0, vExampleTimerCallback);
 
-		 xTimerStart(xExampleSoftwareTimer, 0);
+		xTimerStart(xExampleSoftwareTimer, 0);
 		/* Start the tasks and timer running. */
-		//debug_log("start schedule ");
+		debug_log("start scheduler ");
 		vTaskStartScheduler();
 	}
 
@@ -204,9 +203,8 @@ const char * const pcFailMessage = "Unexpected value received\r\n";
 		is it the expected value?  If it is, toggle the LED. */
 		if( ulReceivedValue == ulExpectedValue )
 		{
-			debug_log("recv msg");
-			//write( STDOUT_FILENO, "recv msg : ", strlen("recv msg : ") );
-			//write( STDOUT_FILENO, pcPassMessage, strlen( pcPassMessage ) );
+			debug_log("recv msg: %s \n", pcPassMessage);
+			//delbug_log(pcPassMessage, strlen( pcPassMessage ) );
 			ulReceivedValue = 0U;
 		}
 		else
@@ -221,7 +219,7 @@ static void vExampleTimerCallback(TimerHandle_t xTimer)
 	     *     timer that calls this function is an auto re-load timer, so it will
 	     *         execute periodically. */
 	    static int cnt = 0;
-	    printf("timers Callback %d\r\n", cnt++);
+	    debug_log("timers Callback %d\n", cnt++);
 }
 /*-----------------------------------------------------------*/
 
