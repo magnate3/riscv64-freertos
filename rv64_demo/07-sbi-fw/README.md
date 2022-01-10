@@ -94,7 +94,7 @@ QEMU: Terminated
 ```
 
 # ===============================  fw_jump.elf
-[opensbi_qemu](https://github.com/magnate3/opensbi_qemu)
+fw_jump.elf is made by [opensbi_qemu](https://github.com/magnate3/opensbi_qemu)
 
 
 # =============================== run case2
