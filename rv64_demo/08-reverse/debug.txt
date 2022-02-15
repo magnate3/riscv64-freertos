@@ -1,0 +1,2 @@
+file build/FreeRTOS-simple.elf
+target remote :1234
