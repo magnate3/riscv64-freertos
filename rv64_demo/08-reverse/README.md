@@ -1,6 +1,6 @@
  
 
-================================run
+#================================run
 ```
  qemu-system-riscv64 -M virt -kernel build/FreeRTOS-simple.elf.bin -bios none -serial stdio -display none
 Hello, FreeRTOS!
